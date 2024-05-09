@@ -1,8 +1,17 @@
-# Nuxt 3 Minimal Starter
+# Chatbot with finetuned model
+
+Based on [https://vercel.com/templates/nuxt/nuxt-ai-chatbot](https://vercel.com/templates/nuxt/nuxt-ai-chatbot)
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
+
+In your terminal, set environment variables:
+
+```bash
+export OPENAI_API_KEY=
+export MODEL_ID=
+```
 
 Make sure to install the dependencies:
 
@@ -19,13 +28,15 @@ pnpm install
 
 ## Development Server
 
-Start the development server on http://localhost:3000
+Start the development server on localhost to see the UI in your browser
 
 ```bash
 npm run dev
 ```
 
-## Production
+## Deployment
+
+Don't forget to add environment variables `OPENAI_API_KEY` and `MODEL_ID`
 
 Build the application for production:
 
@@ -40,5 +51,3 @@ npm run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-# reddit-summary
