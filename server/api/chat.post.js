@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
 		},
 		body: JSON.stringify({
 			// model: 'gpt-3.5-turbo',
-      model: 'ft:gpt-3.5-turbo-1106:personal:fb-messenger:91rKFvb4',
+      model: config.MODEL_ID,
 			// prompt: prompt,
 			temperature: 0.9,
 			max_tokens: 512,
@@ -26,6 +26,8 @@ export default defineEventHandler(async (event) => {
 	});
 
 	const res = await req.json();
+  console.log(res);
+
 	const result = res.choices[0];
 	return {
 		message: result.message.content,

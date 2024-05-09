@@ -1,8 +1,8 @@
-Based on https://vercel.com/templates/nuxt/nuxt-ai-chatbot
+# Nuxt 3 Minimal Starter
 
-## Setup to run locally
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-Create a .local.env file with your OpenAI API key.
+## Setup
 
 Make sure to install the dependencies:
 
@@ -41,3 +41,4 @@ npm run preview
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
+# reddit-summary
