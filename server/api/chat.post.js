@@ -1,10 +1,11 @@
 export default defineEventHandler(async (event) => {
 	const config = useRuntimeConfig();
 	let messages = [];
-	const previosMessages = await readBody(event);
-	messages = messages.concat(previosMessages);
-	let prompt =
-		messages.map((message) => `${message.role.toLowerCase()}: ${message.message}`).join('\n') + `\nAI:`;
+	const previousMessages = await readBody(event);
+	messages = messages.concat(previousMessages);
+  const latestUserMsg = previousMessages.slice(-1)[0].message;
+	// let prompt =
+	// 	messages.map((message) => `${message.role.toLowerCase()}: ${message.message}`).join('\n') + `\nAI:`;
 	let messageList = messages.map((message) => ({ role: message.role.toLowerCase(), content: message.message }))
     const req = await fetch('https://api.openai.com/v1/chat/completions', {
 		method: 'POST',
@@ -26,9 +27,11 @@ export default defineEventHandler(async (event) => {
 	});
 
 	const res = await req.json();
-  console.log(res);
-
 	const result = res.choices[0];
+  
+  console.log("User: ", latestUserMsg)
+  console.log("Bot: ", result.message.content);
+
 	return {
 		message: result.message.content,
 	};
