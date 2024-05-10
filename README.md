@@ -8,10 +8,9 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 
 In your terminal, set environment variables:
 
-```bash
-export OPENAI_API_KEY=<your OpenAI API key>
-export MODEL_ID=<your OpenAI finetuned model id>
-```
+export OPENAI_API_KEY=<your key>
+export MODEL_ID=<your finetuned model ID on OpenAI>
+export TEMP=<default to 0.8. try something between 0.6-1>
 
 Make sure to install the dependencies:
 

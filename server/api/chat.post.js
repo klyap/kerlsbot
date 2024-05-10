@@ -16,11 +16,11 @@ export default defineEventHandler(async (event) => {
 			// model: 'gpt-3.5-turbo',
       model: config.MODEL_ID,
 			// prompt: prompt,
-			temperature: 0.9,
+			temperature: config.TEMP || 0.8,
 			max_tokens: 512,
-			top_p: 1.0,
-			frequency_penalty: 0,
-			presence_penalty: 0.6,
+			// top_p: 1.0,
+			// frequency_penalty: 0,
+			// presence_penalty: 0.6,
       messages: messageList
 		})
 	});
