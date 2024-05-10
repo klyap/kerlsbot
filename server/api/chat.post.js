@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
 			// model: 'gpt-3.5-turbo',
       model: config.MODEL_ID,
 			// prompt: prompt,
-			temperature: config.TEMP || 0.8,
+			temperature: config.TEMPERATURE || 0.8,
 			max_tokens: 512,
 			// top_p: 1.0,
 			// frequency_penalty: 0,
