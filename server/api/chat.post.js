@@ -1,3 +1,24 @@
+import { initLogger, traced } from "braintrust";
+
+const logger = initLogger({
+  projectName: "My first project",
+  apiKey: process.env.BRAINTRUST_API_KEY,
+});
+
+async function logResponse(req, latestUserMsg) {
+  return traced(async (span) => {
+    const res = await req.json();
+    const result = res.choices[0];
+
+    console.log("User: ", latestUserMsg)
+    console.log("Bot: ", result.message.content);
+    span.log({ input: latestUserMsg, output: result.message.content });
+    return {
+      message: result.message.content,
+    };
+  });
+}
+
 export default defineEventHandler(async (event) => {
 	const config = useRuntimeConfig();
 	let messages = [];
@@ -26,13 +47,7 @@ export default defineEventHandler(async (event) => {
 		})
 	});
 
-	const res = await req.json();
-	const result = res.choices[0];
-  
-  console.log("User: ", latestUserMsg)
-  console.log("Bot: ", result.message.content);
+  const returnObj = logResponse(req, latestUserMsg);
 
-	return {
-		message: result.message.content,
-	};
+  return returnObj;
 });
